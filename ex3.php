@@ -52,22 +52,19 @@ function exercise3(array $myArr): void {
     }
     $unDest = array_unique($dest);
     foreach ($unDest as $ndValue){
-        echo 'Destination "' . $ndValue . '".' . PHP_EOL;
-        echo 'Titles: ';
+        echo 'Destination "' . $ndValue . '".' . PHP_EOL . 'Titles: ';
         foreach ($myArr as $value){
-            if ($value['destination'] === $ndValue){
+            if ($value['destination'] === $ndValue && $value['price']!==null){
                 echo '"' . $value['title'] . '", ';
             }
         }
-        echo PHP_EOL;
         $sum = 0;
-        echo 'Total: ';
         foreach ($myArr as $value){
-            if ($value['destination'] === $ndValue){
+            if ($value['destination'] === $ndValue && $value['price']!==null){
             $sum += $value['price'] * $value['tourists'];
             }
         }
-        echo $sum . PHP_EOL . '*****************' . PHP_EOL;
+        echo PHP_EOL . 'Total: ' . $sum . PHP_EOL . '*****************' . PHP_EOL;
     }
 }
 
