@@ -1,16 +1,6 @@
 <?php
 
-
-//3.     Masyve $holidays turime kelionių agentūros siūlomas keliones su kaina ir dalyvių skaičiumi.
-//Terminale išspausdinkite santrauką, kurioje matytusi miesto pavadinimas, kelionių pavadinimai ir dalyvių sumokėta suma
-//      Dėmesio! Santraukoje nerodykite tų kelionių, kurių kaina yra null. (3 balai)
-//
-//Destination "Paris".
-//Titles: "Romantic Paris", "Hidden Paris"
-//Total: 99500
-//************
-//Destination "New York"
-//      ...
+//4. Pakoreguokite 3 užduotį taip, kad ji duomenis rašytų ne į terminalą, o spausdintų į failą. (1.5 balas)
 
 $holidays = [
     [
@@ -59,23 +49,20 @@ function exercise4(array $myArr): void
         $content = 'Destination "' . $ndValue . '".' . PHP_EOL . 'Titles: ';
         file_put_contents($fileName, $content, FILE_APPEND);
         foreach ($myArr as $value) {
-            if ($value['destination'] === $ndValue) {
+            if ($value['destination'] === $ndValue && $value['price'] !== null) {
                 $content = '"' . $value['title'] . '", ';
                 file_put_contents($fileName, $content, FILE_APPEND);
             }
         }
         $sum = 0;
-        $content = PHP_EOL . 'Total: ';
-        file_put_contents($fileName, $content, FILE_APPEND);
         foreach ($myArr as $value) {
-            if ($value['destination'] === $ndValue) {
+            if ($value['destination'] === $ndValue && $value['price'] !== null) {
                 $sum += $value['price'] * $value['tourists'];
             }
         }
-        $content = $sum . PHP_EOL . '*****************' . PHP_EOL;
+        $content = PHP_EOL . 'Total: ' . $sum . PHP_EOL . '*****************' . PHP_EOL;
         file_put_contents($fileName, $content, FILE_APPEND);
     }
 }
 
 exercise4($holidays);
-
