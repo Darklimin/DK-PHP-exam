@@ -1,4 +1,6 @@
 <?php
 
+//5. Parašykite programą, kuri Jūsų susigalvotus duomenis paimtų iš failo ir atspausdintų terminale. (1.5 balas)
+
 $fileName = './ex5input.txt';
 print_r(file_get_contents($fileName));
